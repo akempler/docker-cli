@@ -1,6 +1,5 @@
-FROM php:7.1-cli
-# FROM php:7.1
-# FROM php:latest
+FROM php:5.6-cli
+
 MAINTAINER Adam Kempler <akempler@gmail.com>
 
 # ENTRYPOINT ["/root/entrypoint.sh"]
@@ -26,6 +25,8 @@ RUN apt-get update \
     libssh2-1-dev \
     libssh2-php \
     openssh-server \
+    php5-cli \
+    php5-common \
  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip \
  && apt-get clean
