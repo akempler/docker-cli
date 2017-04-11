@@ -32,6 +32,11 @@ RUN apt-get update \
  && apt-get clean
 
 
+RUN apt-get update \
+ && apt-get install -y \
+ && pecl install -o -f xdebug
+
+
  # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php \
  && mv composer.phar /usr/local/bin/composer
@@ -91,6 +96,8 @@ RUN npm install -g gulp-cli
 
 # Copy configs
 ADD conf/php.ini $PHP_INI_DIR/conf.d/
+# COPY scripts/xdebug.sh /var/www/xdebug.sh
+
 
 WORKDIR /var/www/html
 
