@@ -42,16 +42,13 @@ RUN composer global require drush/drush \
  && ln -s /root/.composer/vendor/bin/drush /usr/local/bin/drush
 
 
-# Install Drupal Console
-# RUN composer global require drupal/console-core:1.0.0-rc8@dev
-# RUN composer global require drupal/console:1.0.0-rc8@dev
-# RUN composer update drupal/console --with-dependencies
-# CAN NOT get the rc to install.
 # RUN composer global require drupal/console-core:~1.0@RC \
 # --prefer-dist \
 # --optimize-autoloader \
 # --sort-packages
-RUN composer global require drupal/console:@stable
+# RUN composer global require drupal/console:@stable
+# Install Drupal Console using Composer.
+RUN composer global require drupal/console:dev-master --prefer-dist
 
 # Install Drupal Console alternative method
 #RUN curl https://drupalconsole.com/installer -L -o drupal.phar \
