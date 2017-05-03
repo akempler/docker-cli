@@ -8,7 +8,8 @@ CLI tools for Drupal development such as php, drush, console, composer, npm, gul
 ```yml
 cli:
     depends_on:
-      - apache
+      mysql:
+        condition: service_started
     build: ./docker/cli
     volumes:
       - ./db:/var/db # Used to import databases from command line
@@ -30,3 +31,4 @@ cli:
 ```sh
 docker run -d akempler/cli:7.1
 docker run -it akempler/cli:7.1 /bin/bash
+```
