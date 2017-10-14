@@ -41,21 +41,9 @@ RUN composer global require drush/drush \
  && composer global update \
  && ln -s /root/.composer/vendor/bin/drush /usr/local/bin/drush
 
-
-# RUN composer global require drupal/console-core:~1.0@RC \
-# --prefer-dist \
-# --optimize-autoloader \
-# --sort-packages
-# RUN composer global require drupal/console:@stable
-# Install Drupal Console using Composer.
-RUN composer global require drupal/console:dev-master --prefer-dist
-
-# Install Drupal Console alternative method
-#RUN curl https://drupalconsole.com/installer -L -o drupal.phar \
-# && mv drupal.phar /usr/local/bin/drupal \
-# && chmod +x /usr/local/bin/drupal \
-# && drupal init --override
-
+# Install Drupal Console
+RUN composer require drupal/console:~1.0 --prefer-dist --optimize-autoloader
+RUN composer update drupal/console --with-dependencies
 
 # Install Compass
 #RUN gem update --system \
