@@ -72,9 +72,10 @@ RUN npm install -g npm
 # Disabled because initially during upgrade, the theme won't be there.
 # RUN npm install
 
+# Failing to build on https://hub.docker.com/r/akempler/cli
+# Build failed: The command '/bin/sh -c npm install -g gulp-cli' returned a non-zero code: 8
 # Install gulp globally.
-# RUN npm install -g gulp-cli
-RUN npm install --global gulp-cli
+# RUN npm install --global gulp-cli
 
 # Copy configs
 ADD conf/php.ini $PHP_INI_DIR/conf.d/
