@@ -73,7 +73,8 @@ RUN npm install -g npm
 # RUN npm install
 
 # Install gulp globally.
-RUN npm install -g gulp-cli
+# RUN npm install -g gulp-cli
+RUN npm install --global gulp-cli
 
 # Copy configs
 ADD conf/php.ini $PHP_INI_DIR/conf.d/
