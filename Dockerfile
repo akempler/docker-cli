@@ -62,10 +62,10 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 
 # Install nvm and update node to 6.0
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 
 RUN source ~/.bashrc \
- && nvm install 6.0
+ && nvm install node
 
 
 RUN npm install -g npm
