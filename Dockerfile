@@ -47,32 +47,11 @@ RUN composer update drupal/console --with-dependencies
 
 RUN composer global update
 
-# Install Compass
-#RUN gem update --system \
-# && gem install compass
-
 #RUN composer global require "squizlabs/php_codesniffer=*"
 
-RUN apt-get install -y \
- nodejs \
- npm
+FROM node:9
 
-# Otherwise npm isntall will give an error about node.
-RUN ln -s /usr/bin/nodejs /usr/bin/node
-
-
-# Install nvm and update node to 6.0
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
-
-RUN source ~/.bashrc \
- && nvm install node
-
-
-RUN npm install -g npm
-# Disabled because initially during upgrade, the theme won't be there.
-# RUN npm install
-
-# Failing to build on https://hub.docker.com/r/akempler/cli
+# Failing to build on https://hub.docker.com/rs/akempler/cli
 # Build failed: The command '/bin/sh -c npm install -g gulp-cli' returned a non-zero code: 8
 # Install gulp globally.
 # RUN npm install --global gulp-cli
