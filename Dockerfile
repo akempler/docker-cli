@@ -19,13 +19,8 @@ RUN apt-get update \
     git \
     curl \
     wget \
-    ruby-full \
-    rubygems \
     vim \
     zip \
-    libssh2-1-dev \
-    libssh2-php \
-    openssh-server \
  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip \
  && apt-get clean
@@ -49,17 +44,14 @@ RUN composer global update
 
 #RUN composer global require "squizlabs/php_codesniffer=*"
 
-FROM node:9
-
-# Failing to build on https://hub.docker.com/rs/akempler/cli
-# Build failed: The command '/bin/sh -c npm install -g gulp-cli' returned a non-zero code: 8
-# Install gulp globally.
-# RUN npm install --global gulp-cli
-
 # Copy configs
 ADD conf/php.ini $PHP_INI_DIR/conf.d/
 
 WORKDIR /var/www/html
+
+
+FROM node:9
+
 
 # ADD entrypoint.sh /root
 # RUN chmod +x /root/entrypoint.sh
