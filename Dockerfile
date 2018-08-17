@@ -1,7 +1,7 @@
-FROM php:7.1-cli
+FROM php:7.2-cli
 # FROM php:7.1
 # FROM php:latest
-MAINTAINER Adam Kempler <akempler@gmail.com>
+LABEL maintainer="akempler@gmail.com"
 
 # ENTRYPOINT ["/root/entrypoint.sh"]
 
