@@ -29,6 +29,6 @@ cli:
 ## Run
 
 ```sh
-docker run -d akempler/cli:7.1
-docker run -it akempler/cli:7.1 /bin/bash
+docker run -d akempler/cli:7.2
+docker run -it akempler/cli:7.2 /bin/bash
 ```

@@ -22,7 +22,8 @@ RUN apt-get update \
   vim \
   zip \
   libssh2-1-dev \
-  php-ssh2 \
+  libssh2-1 \
+  gnupg \
   openssh-server \
  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip \
@@ -45,12 +46,13 @@ RUN composer update drupal/console --with-dependencies
 
 #RUN composer global require "squizlabs/php_codesniffer=*"
 
-RUN apt-get install -y \
- nodejs \
- npm
+# update repository list.
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs \
+  && npm install -g gulp-cli
 
 # Otherwise npm isntall will give an error about node.
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+# RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 
 # Install nvm and update node to 6.0
@@ -60,12 +62,12 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 # && nvm install 6.0
 
 
-RUN npm install -g npm
+# RUN npm install -g npm
 # Disabled because initially during upgrade, the theme won't be there.
 # RUN npm install
 
 # Install gulp globally.
-RUN npm install -g gulp-cli
+#RUN npm install -g gulp-cli
 
 # Copy configs
 ADD conf/php.ini $PHP_INI_DIR/conf.d/
